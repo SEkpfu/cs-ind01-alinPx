@@ -1,25 +1,76 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34024.191
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Laba 1", "Laba 1\Laba 1.csproj", "{945E2EEE-B69B-4F44-A29D-8489FA8DD335}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{945E2EEE-B69B-4F44-A29D-8489FA8DD335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{945E2EEE-B69B-4F44-A29D-8489FA8DD335}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{945E2EEE-B69B-4F44-A29D-8489FA8DD335}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{945E2EEE-B69B-4F44-A29D-8489FA8DD335}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {60D4D9F5-711D-4DCB-AD47-F45A1AB6BFA5}
-	EndGlobalSection
-EndGlobal
+////////////////
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Vvedite kol-vo chisel: ");
+        int n = int.Parse(Console.ReadLine());
+        double[] xZn = new double[n];
+        double[] fZn = new double[n];
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Vvedite chislo x{i + 1}: ");
+            xZn[i] = double.Parse(Console.ReadLine());
+            fZn[i] = CalculateF(xZn[i]);
+        }
+        int T_vOblasti = Schet_TvOblasti(xZn, fZn);
+        Console.WriteLine($"Kol-vo tochek v olaasti: {T_vOblasti}");
+        Nauti_Dalniu_Tprint(xZn, fZn);
+    }
+    static double CalculateF(double x)
+    {
+        if (x < -3)
+        {
+            return ((1.0 + x * x * x) / (2.0 * x)) * ((x + 4.0) / (x * x - 1.0/ x));
+        }
+        else if (x >= -3 && x < 2 * Math.PI)
+        {
+            return (x * x - 3) * Math.Sin(2 * x);
+        }
+        else
+        {
+            return 2 * (1.0 / 3.0);
+        }
+    }
+    static int Schet_TvOblasti(double[] xZnach, double[] fZnach)
+    {
+        int count = 0;
+        for (int i = 0; i < xZnach.Length; i++)
+        {
+            double x = xZnach[i];
+            double y = fZnach[i];
+
+            if ((x <= 0 && y <= 0 && x*x + y*y <= 100)||(y >= -10 && y <= -5 && x <= -10 && x*x + y*y <=100)||(x >= 0 && y <= 0 && x-y <= 10))
+            {
+                count++;
+            }
+            else
+            {
+                double rast = Math.Sqrt(x*x + y*y);
+                Console.WriteLine($"Rasstouanie ot tochki ({x}, {y}) do (0, 0): {rast}");
+            }
+        }
+        return count;
+    }
+    static void Nauti_Dalniu_Tprint(double[] xValues, double[] fValues)
+    {
+        double max_rast = 0;
+        double dalnX = 0;
+        double dalnY = 0;
+        for (int i = 0; i < xValues.Length; i++)
+        {
+            double x = xValues[i];
+            double y = fValues[i];
+            if (x < 0 && y > 0)
+            {
+                double rasst = Math.Sqrt(x * x + y * y);
+                if (rasst > max_rast)
+                {
+                    max_rast = rasst;
+                    dalnX = x;
+                    dalnY = y;
+                }
+            }
+        }
+    }
+}
