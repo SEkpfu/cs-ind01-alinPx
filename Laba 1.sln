@@ -1,3 +1,453 @@
+Пролистайте вниз пожалуйста! у меня просто все в одном файле находится не успела разделить
+
+
+//Console.WriteLine("Hello, World!");
+using System;
+using System.Security.Cryptography;
+
+////1 zad
+//int b; string a;
+//Console.WriteLine("Vvedite svoe imua: ");
+//a = Console.ReadLine();
+//Console.WriteLine("Vvedite svou vozrast: ");
+//b = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine($"Privet {a} tebe v sledueshem godu : {b + 1} :)");
+
+//2 zad
+//double charka = 0.132, shkalik = 0.06;
+//int x, y, z, w;
+
+
+//using System;
+//class Program
+//{
+//    const double Charka = 0.123;
+//    const double Shkalik = 0.06;
+//    static void Main(string[] args)
+//    {
+//        string n1, n2, n3;
+//        int x, y, z, w;
+//        //1
+//        Console.Write("VVedite imua= ");
+//        n1 = Console.ReadLine();
+//        Console.Write("Vvedite col-vo vupituh charok= ");
+//        x = int.Parse(Console.ReadLine());
+//        //2
+//        Console.Write("VVedite imua= ");
+//        n2 = Console.ReadLine();
+//        Console.Write("VVedite col-vo vupituh shkalikov= ");
+//        y = int.Parse(Console.ReadLine());
+//        //3
+//        Console.Write("VVedite imua= ");
+//        n3 = Console.ReadLine();
+//        Console.Write("Vvedite col-vo vupituh charok= ");
+//        z = int.Parse(Console.ReadLine());
+//        Console.Write("VVedite col-vo vupituh shkalikov= ");
+//        w = int.Parse(Console.ReadLine());
+
+//        Console.WriteLine();
+//        // Vivod
+//        Console.WriteLine($" 1 personazh ({n1}) vupil {InLiter(x, 0)} litrov");
+//        Console.WriteLine($" 2 personazh  ({n2}) vupil {InLiter(0, y)} litrov");
+//        Console.WriteLine($" 3 personazh  ({n3}) vupil {InLiter(z, w)} litrov\n");
+
+//        Console.WriteLine("Personazhi, kotorue vupili > 0.5 i < 1 = ");
+//        Proverka_Print(n1, x);
+//        Proverka_Print(n2, y);
+//        Proverka_Print(n3, z + w);
+
+//        Console.WriteLine($"Vsegp vupito = {InLiter(x, 0) + InLiter(0, y) + InLiter(z, w)} litrov\n");
+//        Console.WriteLine($"Naibolshiu V = {Max(InLiter(x, 0), InLiter(0, y), InLiter(z, w))} litrov");
+//    }
+//    //metod vuchisleniu
+//    static double InLiter(int ch, int shk)
+//    {
+//        double liters = ch * Charka + shk * Shkalik;
+//        return liters;
+//    }
+//    //metod proverka
+//    static void Proverka_Print(string name, int sum)
+//    {
+//        double liter = InLiter(sum, 0);
+//        if (liter > 0.5 && liter < 1)
+//        {
+//            Console.WriteLine(name);
+//        }
+//    }
+//    //metod max
+//    static double Max(double a, double b, double c)
+//    {
+//        return Math.Max(Math.Max(a, b), c);
+//    }
+//}
+
+////////3
+
+////Console.WriteLine("Vvedite svou datu rozhdeniua(dd.mm.gg.)= ");
+////System.DateTime data;
+//class Program
+//{
+//    static void Main()
+//    {
+//        Console.WriteLine("Vvedite svou datu rozhdeniua(dd.mm.gggg.)= ");
+//        DateTime birth = DateTime.Parse(Console.ReadLine());
+//        DateTime now_date = DateTime.Now;
+//        int age = Calcul_age(birth, now_date);
+
+//        Console.WriteLine($"Vam seuchas {age} {age_suffix(age)}");
+//    }
+//    //schet vozrasta
+//    static int Calcul_age(DateTime birth, DateTime now_date)
+//    {
+//        int age = now_date.Year - birth.Year;
+//        if (now_date.Month < birth.Month || (now_date.Month == birth.Month && now_date.Day < birth.Day))
+//        {
+//            age--;
+//        }
+//        return age;
+//    }
+//    //okonchanua
+//    static string age_suffix(int age)
+//    {
+//        if (age % 10 == 1 && age % 100 != 11)
+//        {
+//            return "god";
+//        }
+//        else if ((age % 10 >= 2 && age % 10 <= 4) && (age % 100 < 10 || age % 100 >= 20))
+//        {
+//            return "goda";
+//        }
+//        else
+//        {
+//            return "let";
+//        }
+//    }
+//}
+
+////////4
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Console.WriteLine("Vveddite tseloe neotretsatolnoe chislo = ");
+//        int n = int.Parse(Console.ReadLine());
+
+//        Console.WriteLine($"Prostue chisla v promezhutke ot 2 do {n}= ");
+//        for (int i = 2; i <= n; i++)
+//        {
+//            if (prost(i))
+//            {
+//                Console.Write(i + " ");
+//            }
+//        }
+//    }
+//    //prostue chisla proverka
+//    static bool prost(int number)
+//    {
+//        if (number < 2)
+//        {
+//            return false;
+//        }
+//        for (int i = 2; i <= Math.Sqrt(number); i++)
+//        {
+//            if (number % i == 0)
+//            {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//}
+
+////////5  zad shit log.. v tokhkea,b,c.. proizvedenie otritsat znakhene znakhit shto herez shto to prohodit(mas.log???)
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        double a = 0;
+//        double b = 0.9;
+//        double e = 0.001;
+
+//        double result = metod(a, b, e);
+//        Console.WriteLine($"Koren uravneniua = {result}");
+//    }
+//    static double Function(double x)
+//    {
+//        return Math.Log(Math.Pow(x, 2) - 3 * x + 2);
+//    }
+//    static double metod(double a, double b, double e)
+//    {
+//        double fa = Function(a);
+//        double fb = Function(b);
+
+//        if (fa * fb >= 0)
+//        {
+//            Console.WriteLine("F ne imeet znak na otrezke [a, b]");
+//            return double.NaN; 
+//        }
+//        double c;
+//        do
+//        {
+//            c = (a + b) / 2;
+//            double fc = Function(c);
+//            if (fa * fc < 0)
+//            {
+//                b = c;
+//                fb = fc;
+//            }
+//            else
+//            {
+//                a = c;
+//                fa = fc;
+//            }
+//        } while (Math.Abs(b - a) > e);
+//        return (a + b) / 2;
+//    }
+//}
+
+////////////////6
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        Console.WriteLine("Vvedite elementu massiva cherez probel= ");
+//        int[] arr = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+//        Console.WriteLine("Vvedite chislo dlua ydaleniua iz massiva= ");
+//        int num_delit = int.Parse(Console.ReadLine());
+
+//        arr = Delit_num_inarr(arr, num_delit);
+//        Console.WriteLine("Massiv posle ydaleniua= ");
+//        for (int i = 0; i < arr.Length; i++)
+//        {
+//            Console.Write(arr[i] + " ");
+//        }
+//    }
+
+//    static int[] Delit_num_inarr(int[] arr, int num)
+//    {
+//        int new_size = 0;
+//        for (int i = 0; i < arr.Length; i++)
+//        {
+//            if (arr[i] != num)
+//            {
+//                arr[new_size++] = arr[i];
+//            }
+//        }
+//        Array.Resize(ref arr, new_size);
+//        return arr;
+//    }
+//}
+
+///////////7
+///
+
+//class Program
+//{
+//    static int[] Gener_rand_arr(int size)
+//    {
+//        Random random = new Random();
+//        int[] arr = new int[size];
+//        for (int i = 0; i < size; i++)
+//        {
+//            arr[i] = random.Next(1, 100);
+//        }
+//        return arr;
+//    }
+//    static void Sort_chetn(int[] arr)
+//    {
+//        for (int i = 0; i < arr.Length; i += 2)
+//        {
+//            int minIndex = i;
+//            for (int j = i + 2; j < arr.Length; j += 2)
+//            {
+//                if (arr[j] < arr[minIndex])
+//                {
+//                    minIndex = j;
+//                }
+
+//                if (i != minIndex)
+//                {
+//                    int temp = arr[i];
+//                    arr[i] = arr[minIndex];
+//                    arr[minIndex] = temp;
+//                }
+//            }
+//        }
+//        static void PrintArr(int[] arr)
+//        {
+//            for (int i = 0; i < arr.Length; i++)
+//            {
+//                Console.Write(arr[i] + " ");
+//            }
+//        }
+//        static void Main()
+//        {
+//            int[] arr = Gener_rand_arr(70);
+
+//            Console.WriteLine("Ishodnu massiv= ");
+//            PrintArr(arr);
+//            Sort_chetn(arr);
+//            Console.WriteLine("\n Massiv posle sortirovki elementov na chetnuh pozitsiuah= ");
+//            PrintArr(arr);
+//        }
+//    }
+//}
+
+
+////////chast 2
+///
+
+
+//class Program
+//{
+//    static void Main()
+//    {
+//        List<double> V = new List<double>();
+//        int count = 0;
+//        double totalV = 0;
+//        double maxV = 0;
+//        int maxV_Index = 0;
+//        int countV_10 = 0;
+
+//        while (true)
+//        {
+//            Console.WriteLine("Vvedite visotu i radius tsulendricheskou bochki (cherez space), stop zaversh. = ");
+//            string input = Console.ReadLine();
+//            if (input.ToLower() == "stop")
+//            {
+//                break;
+//            }
+//            else
+//            {
+//                string[] values = input.Split(' ');
+//                if (values.Length != 2)
+//                {
+//                    continue;
+//                }
+//                double height, radius;
+//                if (!double.TryParse(values[0], out height) || !double.TryParse(values[1], out radius))
+//                {
+//                    continue;
+//                }
+//                double volume = Math.PI * Math.Pow(radius, 2) * height;
+//                V.Add(volume);
+//                totalV += volume;
+//                count++;
+
+//                if (volume > 10)
+//                {
+//                    countV_10++;
+//                }
+//                if (volume > maxV)
+//                {
+//                    maxV = volume;
+//                    maxV_Index = count;
+//                }
+//            }
+//        }
+//        Console.WriteLine($"Kol-vo  bochek :{count}");
+//        for (int i = 0; i < count; i++)
+//        {
+//            Console.WriteLine($"V bochki {i + 1}: {V[i]}");
+//        }
+//        Console.WriteLine($"Nomer samou bolshou bokchiki : {maxV_Index}, V: {maxV}");
+//        Console.WriteLine($"Obshiu  stmmarnu V: {totalV}");
+//        Console.WriteLine($"Kol-vo bochek s V > 10: {countV_10}");
+
+//        List<double> areas = new List<double>();
+//        int countArea_10 = 0;
+//        double blizh_10 = double.MaxValue;
+
+//        while (true)
+//        {
+//            Console.WriteLine("Vvedite koordinatu vershin treugolnika ( cherez spase), stop dlua zaversh,:");
+//            string input = Console.ReadLine();
+//            if (input.ToLower() == "stop")
+//            {
+//                break;
+//            }
+//            else
+//            {
+//                string[] values = input.Split(' ');
+//                if (values.Length != 6)
+//                {
+//                    continue;
+//                }
+//                double x1, y1, x2, y2, x3, y3;
+//                if (!double.TryParse(values[0], out x1) || !double.TryParse(values[1], out y1) || !double.TryParse(values[2], out x2) || !double.TryParse(values[3], out y2) ||
+//                    !double.TryParse(values[4], out x3) || !double.TryParse(values[5], out y3))
+//                {
+//                    continue;
+//                }
+//                double area = Math.Abs(0.5 * ((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)));
+//                areas.Add(area);
+
+//                if (area > 10)
+//                {
+//                    countArea_10++;
+//                }
+//                if (Math.Abs(area - 10) < Math.Abs(blizh_10 - 10))
+//                {
+//                    blizh_10 = area;
+//                }
+//            }
+//        }
+//        Console.WriteLine("S treygolnikov:");
+//        for (int i = 0; i < areas.Count; i++)
+//        {
+//            Console.WriteLine(areas[i]);
+//        }
+//        Console.WriteLine($"Kol-vo S > 10: {countArea_10}");
+//        Console.WriteLine($"S blizhaushaua k 10: {blizh_10}");
+//    }
+//}
+////////3
+//class Program
+//{
+//    static void Main()
+//    {
+//        Console.WriteLine("Vvedite elementu massiva a cherez zapetyu: ");
+//        int[] a = Array.ConvertAll(Console.ReadLine().Split(','), int.Parse);
+//        Console.WriteLine("Vvedite elementu massiva b cherez zapetyu:");
+//        int[] b = Array.ConvertAll(Console.ReadLine().Split(','), int.Parse);
+
+//        int[] c = new int[a.Length]; // rand chisla
+//        Random random = new Random();
+//        for (int i = 0; i < c.Length; i++)
+//        {
+//            c[i] = random.Next(1, 100);
+//        }
+//        int[] result = Calcul_otv(a, b, c);
+//        Console.WriteLine("Rezultat rabothu metoda:");
+//        PrintArr(result);
+//    }
+//    static int[] Calcul_otv(int[] a, int[] b, int[] c)
+//    {
+//        int[] result = new int[a.Length * 3];
+//        for (int i = 0; i < a.Length; i++)
+//        {
+//            result[i * 3] = (a[i] + b[i]) / 2;
+//            result[i * 3 + 1] = c[i];
+//            result[i * 3 + 2] = (a[i] + b[i]) / 2;
+//        }
+//        return result;
+//    }
+//    static void PrintArr(int[] array)
+//    {
+//        for (int i = 0; i < array.Length; i++)
+//        {
+//            Console.Write(array[i]);
+//            if (i < array.Length - 1)
+//            {
+//                Console.Write(", ");
+//            }
+//        }
+//        Console.WriteLine();
+//    }
+//}
 ////////////////
 class Program
 {
